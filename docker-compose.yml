@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./COMP3123_Assignment1
+    container_name: COMP3123_Assignment1
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb+srv://donelmukiza05:myNewPass123@cluster0.mongodb.net/comp3123_assigment1?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=yourSecretKey
+
+  frontend:
+    build:
+      context: ./101394045_comp3123_assignment2_reactjs
+    container_name: 101394045_comp3123_assignment2_reactjs
+    ports:
+      - "3001:3001"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000/api/v1
